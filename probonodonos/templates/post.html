@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>probonodonos</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="topbar">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.png') }}" alt="logo" width="107" height="32" style="padding: 0px">
+                </a>
+                <span class="navigator">                     
+                    <a href="/u/{{ logname }}/"><b>{{ logname }}</b></a>
+                </span>
+            </div>
+        </div>
+        <div class="post">
+            <div class="profile">
+                <div class="user">
+                    <a href="/u/{{ owner }}/">
+                        <img class="avatar" src="{{ owner_img_url }}"
+                        alt="avatar">
+                    </a>
+                    <a href="/u/{{ owner }}/"><b>{{ owner }}</b></a>
+                </div>
+                <span>
+                    <a class="ts" href="/p/{{ postid }}/">
+                        {{ timestamp }}
+                    </a>
+                </span> 
+            </div>
+            <div class="image">
+                <img src="{{ img_url }}" alt="image_post">
+            </div>
+            <div class="comments">
+                {% for comment in comments %}
+                    <a href="/u/{{ comment.owner }}/">
+                        <u><b>{{ comment.owner }}</b></u>
+                    </a> 
+                    &nbsp;{{ comment.text }}
+                    <!-- {% if comment.owner == logname %}
+                        <form class="inline_button" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="commentid" value="{{comment.commentid}}"/>
+                            <input type="submit" name="uncomment" value="delete"/>
+                        </form>
+                    {% endif %} -->
+                    <br>
+                {% endfor %}
+            </div>
+            <!-- Form for “comment” button -->
+            <form class="block_button" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="postid" value="{{ postid }}"/>
+                <input type="text" name="text"/>
+                <input type="submit" name="comment" value="inquire"/>
+            </form>
+            <!-- Form for “delete this post” button -->
+            {% if owner == logname %}
+                <form class="block_button" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="postid" value="{{ postid }}"/>
+                    <input type="submit" name="delete" value="delete listing"/>
+                </form>
+            {% endif %}
+        </div>
+    </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni_Moda">
+    <style>
+        body {
+            background-color: black;
+            font-family: "Bodoni Moda";
+        }
+        input[type="submit"]{
+                height: 40px;
+                width: 100px;
+                background: #ADD8E6;
+                border: 2px solid #000;
+                border-radius: 14px;
+            }
+    </style>
+</html>

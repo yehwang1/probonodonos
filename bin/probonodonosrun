@@ -1,0 +1,22 @@
+#!/bin/bash
+# probonodonosrun
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+set -x
+
+# Call probonodonosdb create if the database file does not exist
+
+# rm -rf var/probonodonos.sqlite3 var/uploads
+
+if [ ! -d "var/uploads" ]; then
+  ./bin/probonodonosdb reset
+fi
+# ./bin/probonodonosdb reset
+# Set FLASK_ENV and FLASK_APP environment variables
+export FLASK_ENV=development
+export FLASK_APP=probonodonos
+
+# Run the development server on port 8000
+flask run --host 0.0.0.0 --port 8000

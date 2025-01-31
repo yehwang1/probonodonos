@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>probonodonos</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="topbar">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.png') }}" alt="logo" width="107" height="32" style="padding: 0px">
+                </a>
+                <span class="navigator">
+                    <a href="/explore/"><b>explore</b></a>
+
+                    <a href="/u/{{ logname }}/"><b>{{ logname }}</b></a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="personal">
+            <h1>{{ logname }}</h1>
+            <form method="post" enctype="multipart/form-data">
+                <input type="submit" name="delete" value="confirm delete account"/>
+            </form>
+        </div>
+    </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni_Moda">
+    <style>
+        body {
+            background-color: black;
+            font-family: "Bodoni Moda";
+        }
+    </style>
+</html>

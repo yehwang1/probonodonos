@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>probonodonos</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="topbar">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.png') }}" alt="logo" width="107" height="32" style="padding: 0px">
+                </a>
+                <span class="navigator">                      
+                    <a href="/u/{{ logname }}/"><b>{{ logname }}</b></a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="personal">
+            <h1>{{ username }}</h1>
+            
+            <div class="status">
+                {% if logname_follows_username %}
+                    <p></p>
+                    <!-- <form class="inline_button" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="unfollow" value="unfollow"/>
+                        <input type="hidden" name="username" value="{{ username }}"/>
+                    </form> -->
+                    <div class="wackbutton">
+                        <button type="button" class = "wackbutton">Copy Email</button>
+                    </div>
+                {% elif logname == username %} 
+                    <h4><a href="/accounts/edit/">Edit profile</a></h4>
+                    <form class="inline_button" action="{{ url_for('logout') }}" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="logout" value="Logout"/>
+                    </form>
+                {% else %}
+                    <p></p>
+                    <!-- <form class="inline_button" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="follow" value="follow"/>
+                        <input type="hidden" name="username" value="{{ username }}"/>
+                    </form> -->
+                    <div class="wackbutton">
+                        <button type="button" class = "wackbutton">Copy Email</button>
+                    </div>
+                {% endif %}
+            </div>
+
+            <p>
+                <b>{{ total_posts }}</b>
+                {% if total_posts == 1 %}
+                    listing
+                {% else %}
+                    listings
+                {% endif %}
+                <!-- &nbsp;&nbsp;&nbsp;<a href="/u/{{ username }}/followers/">
+                    <b>{{ followers }}</b>
+                    {% if total_posts == 1 %}
+                        follower
+                    {% else %}
+                        followers
+                    {% endif %}
+                </a>
+                &nbsp;&nbsp;&nbsp;<a href="/u/{{ username }}/following/">
+                    <b>{{ following }}</b>
+                    following
+                </a> -->
+            </p>
+            <p>{{ fullname }}</p>
+
+            {% if logname == username %}
+                <div class="upload">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input type="submit" name="create_post" value="Make listing"/>
+                    </form>
+                </div>
+            {% endif %}
+            
+            <div class="posts">
+                <p>
+                    {% for post in posts %}
+                        <a href="/p/{{ post.postid }}/">
+                            <img class="pimg" src="{{ post.img_url }}" alt="post">
+                        </a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni_Moda">
+    <style>
+        body {
+            font-family: "Bodoni Moda";
+        }
+            input[type="submit"]{
+                height: 40px;
+                width: 100px;
+                background: #ADD8E6;
+                border: 2px solid #000;
+                border-radius: 14px;
+            }
+        .wackbutton {
+            height: 40px;
+            width: 100px;
+            background: #ADD8E6;
+            border: 2px solid #000;
+            border-radius: 14px;
+        }
+    </style>
+</html>

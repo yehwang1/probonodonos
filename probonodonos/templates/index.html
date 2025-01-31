@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>probonodonos</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="topbar">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.png') }}" alt="logo" width="107" height="32" style="padding: 0px">
+                </a>
+                <span class="navigator">                      
+                    <a href="/u/{{ logname }}/"><b>{{ logname }}</b></a>
+                </span>
+            </div>
+        </div>
+        <br><br>
+        <div class="container">
+            {% for post in posts %}
+            <div class="post">
+                <div class="profile">
+                    <div class="user">
+                        <a href="/u/{{ post.owner }}/">
+                            <img class="avatar" src="{{ post.owner_img_url }}"
+                            alt="avatar">
+                        </a>
+                        <a href="/u/{{ post.owner }}/"><b>{{ post.owner }}</b></a>
+                    </div>
+                    <span>
+                        <a class="ts" href="/p/{{ post.postid }}/">
+                            {{ post.timestamp }}
+                        </a>
+                    </span> 
+                </div>
+                <div class="image">
+                    <img src="{{ post.img_url }}" alt="image_post">
+                </div>
+                <div class="comments">
+                    {% for comment in post.comments %}
+                        <a href="/u/{{ comment.owner }}/">
+                            <u>{{ comment.owner }}</u>
+                        </a>
+                        &nbsp;{{ comment.text }}<br>
+                    {% endfor %}
+                </div>
+                <form class="block_button" method="post" enctype="multipart/form-data">
+                    <div class="inquire_button">
+                        <input type="hidden" name="postid" value="{{ post.postid }}"/>
+                        <input type="text" name="text"/>
+                        <br>
+                        <input type="submit" name="comment" value="inquire"/>
+                    </div>
+                </form>
+            </div>
+        {% endfor %} 
+        </div>
+
+    </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni_Moda">
+    <style>
+        .menu {
+            position: fixed;
+            width: 100%;
+        }
+        body {
+            background-color: white;
+            font-family: "Bodoni Moda";
+        }
+        .upload {
+            background-color: white;
+        }
+        input[type="submit"]{
+            height: 20px;
+            width: 60px;
+            background: #ADD8E6;
+            border: 2px solid #000;
+            border-radius: 14px;
+        }
+        input {
+            width: 200px;
+            height: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+    </style>
+</html>

@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# probonodonostest
+#
+# Junliang Huang <junhuang@umich.edu>
+
+
+# Stop on errors, print commands
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+set -x
+
+# Runs pycodestyle probonodonos
+pycodestyle probonodonos
+
+# Runs pydocstyle probonodonos
+pydocstyle probonodonos
+
+# Runs pylint
+pylint --disable=cyclic-import probonodonos
+
+# Runs all unit tests
+pytest -v tests

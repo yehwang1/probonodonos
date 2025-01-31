@@ -1,0 +1,149 @@
+
+body {
+    background-color: black;
+    margin: 0px 0px 70px 0px;
+    font-family: "Bodoni Moda", Times, serif;
+    font-size: 14px;
+}
+
+b {
+    font-weight: 500;
+}
+input[type="submit"]{
+    background: #fff;
+    border: 1px solid #000;
+    text-shadow: 1px 1px 1px #000;
+}
+a:link {
+    color: black;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+  
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+.menu {
+    background-color: black;
+    border-bottom: 1px solid #dbdbdb;
+    height: 32px;
+    padding: 9px;
+    position: fixed;
+}
+
+.topbar {
+    width: 500px;
+    max-width: 500px; 
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+}
+
+.post {
+    width: 500px;
+    max-width: 500px; 
+    background-color: black;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 45px;
+    width: 50%;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+}
+
+.profile {
+    margin: 12px 12px 12px 12px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+img.avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 75%;
+}
+
+a.ts {
+    color: #8e8e8e;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+}
+
+.like {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comments {
+    padding: 0px;
+    margin: 0px 12px 12px 12px;
+    line-height: 20px;
+}
+
+.personal {
+    font-size: 16px;
+    font-weight: normal;
+    margin: auto;
+    width: 500px;
+    max-width: 500px; 
+}
+
+img.pimg {
+    width: 166px;
+    height: 166px;
+    object-fit: cover;
+}
+
+.unfollwed_user {
+    width: 500px;
+    max-width: 500px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    background-color: white;
+    padding: 12px;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.status {
+    border: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.inline_button {
+    display: inline;
+    margin: 10px 10px 10px 10px;
+}
+
+.upload {
+    width: 400px;
+    border: 1px solid #dbdbdb;
+    padding: 12px;
+    padding-left: 6px;
+}

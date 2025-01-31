@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>probonodonos</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="topbar">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.png') }}" alt="logo" width="107" height="32" style="padding: 0px">
+                </a>
+                <span class="navigator">
+                    <a href="/u/{{ logname }}/"><b>{{ logname }}</b></a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="personal">
+            <br>
+            <div class="user">
+                <img class="avatar" src="{{ avatar_src }}"
+                    alt="avatar">
+                <b>{{ logname }}</b>
+            </div>
+            <br>
+            <form method="post" enctype="multipart/form-data">
+                Photo <input type="file" name="file"><br>
+                Name <input type="text" name="fullname" value="{{ fullname }}"/><br>
+                Email <input type="text" name="email" value="{{ email }}"/><br>
+                <input type="submit" name="update" value="submit"/>
+            </form>
+            <p><b><a href="/accounts/password/">
+                Change password
+            </a></b></p>
+            <p><b><a href="/accounts/delete/">
+                Delete account
+            </a></b></p>
+        </div>
+    </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni_Moda">
+    <style>
+        input[type="submit"]{
+            height: 40px;
+            width: 100px;
+            background: #ADD8E6;
+            border: 2px solid #000;
+            border-radius: 14px;
+        }
+        body {
+            font-family: "Bodoni Moda";
+        }
+    </style>
+</html>

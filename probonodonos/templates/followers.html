@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>probonodonos</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="topbar">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.png') }}" alt="logo" width="107" height="32" style="padding: 0px">
+                </a>
+                <span class="navigator">                      
+                    <a href="/u/{{ logname }}/"><b>{{ logname }}</b></a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="personal">
+            <h2>Followers</h2>
+            {% for account in followers %}
+                <div class="unfollwed_user">
+                    <div>
+                        <a href="/u/{{ account.username }}/">
+                            <img class="avatar" src="{{ account.user_img_url }}" alt="avatar">
+                        </a>
+                        <a href="/u/{{ account.username }}/">
+                            {{ account.username }}
+                        </a>
+                    </div>
+                    <div class="status">
+                        {% if account.logname_follows_username %}
+                            following
+                            <form class="inline_button" method="post" enctype="multipart/form-data">
+                                <input type="submit" name="unfollow" value="unfollow"/>
+                                <input type="hidden" name="username" value="{{ account.username }}"/>
+                            </form>
+                        {% elif logname == account.username %} 
+                        {% else %}
+                            not following
+                            <form class="inline_button" method="post" enctype="multipart/form-data">
+                                <input type="submit" name="follow" value="follow"/>
+                                <input type="hidden" name="username" value="{{ account.username }}"/>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodoni_Moda">
+    <style>
+        body {
+            font-family: "Bodoni Moda";
+            background-color: black;
+        }
+    </style>
+</html>
